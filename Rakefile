@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Ffgdb::Application.load_tasks
+Ffg::Application.load_tasks

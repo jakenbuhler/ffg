@@ -1,12 +1,4 @@
-Ffgdb::Application.routes.draw do
-  get "pages/home"
-
-  resources :beers
-
-  resources :breweries
-
-  resources :users
-
+Ffg::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
