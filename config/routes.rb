@@ -1,4 +1,6 @@
 Ffgdb::Application.routes.draw do
+  get "pages/home"
+
   resources :beers
 
   resources :breweries
