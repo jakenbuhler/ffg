@@ -67,6 +67,46 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
+/* Forms */
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors label {
+  color: red;
+}
+
+#error_explanation {
+  width: 80%;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h3 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin-top: -7px;
+  margin-left: -7px;
+  margin-right: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
 /* User show page */
 
 table.profile {
