@@ -1,0 +1,6 @@
+<li>
+  <%= link_to brewery.name, brewery %>
+  | <%= link_to "delete", brewery, :method  => :delete,
+                                   :confirm => "Are you sure? This will also delete all #{brewery.name} beers.",
+                                   :title   => "Delete #{brewery.name}" %>
+</li>

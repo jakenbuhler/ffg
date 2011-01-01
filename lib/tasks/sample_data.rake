@@ -4,6 +4,8 @@ namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
+    
+    # Users
     admin = User.create!(:name => "Example User",
                  :email => "example@railstutorial.org",
                  :password => "foobar",
@@ -17,6 +19,12 @@ namespace :db do
                    :email => email,
                    :password => password,
                    :password_confirmation => password)
+    end
+    
+    # Breweries
+    names = ["Allagash", "Rogue", "Stone"]
+    names.each do |name|
+      Brewery.create!(:name => name)
     end
   end
 end

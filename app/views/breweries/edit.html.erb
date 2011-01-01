@@ -1,0 +1,7 @@
+<h2>Edit Brewery</h2>
+<%= form_for(@brewery) do |f| %>
+  <%= render "fields", :f => f %>
+  <div class="actions">
+    <%= f.submit "Update Brewery" %>
+  </div>
+<% end %>
