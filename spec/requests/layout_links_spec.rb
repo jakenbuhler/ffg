@@ -15,6 +15,9 @@ describe "Layout Links" do
     visit root_path
     click_link "Home"
     response.should have_selector('title', :content => "Home")
+    visit root_path
+    click_link "Breweries"
+    response.should have_selector('title', :content => "Breweries")
   end
   
   describe "when not signed in" do
