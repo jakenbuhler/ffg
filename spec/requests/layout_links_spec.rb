@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Layout Links" do
+describe "LayoutLinks" do
   it "should have a Home page at '/'" do
     get '/'
     response.should have_selector('title', :content => "Home")
@@ -10,14 +10,18 @@ describe "Layout Links" do
     get '/signup'
     response.should have_selector('title', :content => "Sign Up")
   end
+  
+  it "should have an Administration page at '/admin'" do
+    get '/admin'
+    response.should have_selector('title', :content => "Admin")
+  end
 
   it "should have the right links on the layout" do
     visit root_path
     click_link "Home"
     response.should have_selector('title', :content => "Home")
-    visit root_path
-    click_link "Breweries"
-    response.should have_selector('title', :content => "Breweries")
+    click_link "Admin"
+    response.should have_selector('title', :content => "Admin")
   end
   
   describe "when not signed in" do
