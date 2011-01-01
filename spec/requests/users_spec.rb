@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe "Users" do
   describe "signup" do
+    before(:each) do
+      user = Factory(:user)
+      visit signin_path
+      fill_in "Email", :with => user.email
+      fill_in "Password", :with => user.password
+      click_button
+    end
+    
     describe "failure" do
       it "should not make a new user" do
         lambda do

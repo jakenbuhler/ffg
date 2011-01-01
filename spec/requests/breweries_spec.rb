@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe "Breweries" do
   describe "create" do
+    before(:each) do
+      user = Factory(:user)
+      visit signin_path
+      fill_in "Email", :with => user.email
+      fill_in "Password", :with => user.password
+      click_button
+    end
+    
     describe "failure" do
       it "should not make a new brewery" do
         lambda do

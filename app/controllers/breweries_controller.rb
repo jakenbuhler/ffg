@@ -1,4 +1,6 @@
 class BreweriesController < ApplicationController
+  before_filter :authenticate
+  
   def index
     @breweries = Brewery.all
     @title = "Breweries"
@@ -46,4 +48,10 @@ class BreweriesController < ApplicationController
     flash[:success] = "Brewery has been deleted."
     redirect_to breweries_path
   end
+  
+  private
+  
+    def authenticate
+      deny_access unless signed_in?
+    end
 end
