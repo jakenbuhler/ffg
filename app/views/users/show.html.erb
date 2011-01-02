@@ -1,15 +1,9 @@
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h2>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h2>
-    </td>
-    <td class="sidebar">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %><br />
-      <%= link_to "Edit Profile", edit_user_path(@user) %>
-    </td>
-  </tr>
-</table
+<div class="sidebar">
+  <ul>
+    <li><%= link_to "Edit Profile", edit_user_path(@user) %></li>
+  </ul>
+</div>
+<h2>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h2>

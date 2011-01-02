@@ -1,9 +1,15 @@
+/* @override 
+	http://localhost:3000/stylesheets/screen.css?1293820812
+	http://localhost:3000/stylesheets/screen.css?1293925285
+	http://localhost:3000/stylesheets/screen.css?1293927626
+*/
+
 .container {
   width: 710px;
 }
 
 body {
-  background: #cff;
+  background: #d7a852;
 }
 
 header {
@@ -12,28 +18,56 @@ header {
 
 section {
   margin-top: 1em;
-  font-size: 120%;
   padding: 20px;
   background: #fff;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
+	font: 120% Georgia, "Times New Roman", Times, serif;
+}
+
+/* Sidebar */
+
+div.sidebar {
+  padding: 1em;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+	float: right;
+	background-color: #d7a852;
+}
+
+div.sidebar ul {
+	margin: 0;
+	list-style-type: square;
+}
+
+div.sidebar a {
+	font-weight: bold;
+}
+
+/* Headings */
+
+h1 {
+	color: #7b4211;
+	font-family: "OFL Sorts Mill Goudy TT", Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
 }
 
 /* Links */
 
 a {
-  color: #09c;
+  color: #7b4211;
   text-decoration: none;
 }
 
 a:hover {
-  color: #069;
+  color: #7b4211;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #069;
+  color: #7b4211;
 }
 
 /* Navigation */
@@ -55,16 +89,9 @@ nav ul li {
 }
 
 nav ul li a {
-  padding: 0 5px;
   font-weight: bold;
-}
-
-nav ul li a:visited {
-  color: #09c;
-}
-
-nav ul li a:hover {
-  text-decoration: underline;
+	letter-spacing: 1px;
+	padding: 0 10px;
 }
 
 /* Forms */
@@ -119,27 +146,7 @@ ul.users {
 
 /* User show page */
 
-table.profile {
-  width: 100%;
-  margin-bottom: 0;
-}
-
-td.main {
-  width: 70%;
-  padding: 1em;
-}
-
-td.sidebar {
-  width: 30%;
-  padding: 1em;
-  vertical-align: top;
-  background: #ffc;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
-.profile img.gravatar {
+img.gravatar {
   border: 1px solid #999;
   margin-bottom: -15px;
 }
