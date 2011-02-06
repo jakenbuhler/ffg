@@ -7,5 +7,13 @@ Factory.define :user do |user|
 end
 
 Factory.define :brewery do |brewery|
-  brewery.name "Brauhaus"
+  brewery.name "Lagunitas"
+end
+
+Factory.define :beer do |beer|
+  beer.association :brewery
+  beer.style       "Ale"
+  beer.name        "Brown Shugga"
+  beer.abv         9.99
+  beer.description "As good as it sounds!"
 end
