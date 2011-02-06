@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/screen.css?1293820812
 	http://localhost:3000/stylesheets/screen.css?1293925285
 	http://localhost:3000/stylesheets/screen.css?1293927626
+	http://localhost:3000/stylesheets/screen.css?1293929394
 */
 
 .container {
@@ -34,7 +35,7 @@ div.sidebar {
   -webkit-border-radius: 10px;
   border-radius: 10px;
 	float: right;
-	background-color: #d7a852;
+	background-color: #d5d5d5;
 }
 
 div.sidebar ul {
@@ -57,17 +58,17 @@ h1 {
 /* Links */
 
 a {
-  color: #7b4211;
+  color: #0e47a3;
   text-decoration: none;
 }
 
 a:hover {
-  color: #7b4211;
+  color: #0e47a3;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #7b4211;
+  color: #0e47a3;
 }
 
 /* Navigation */
@@ -92,6 +93,16 @@ nav ul li a {
   font-weight: bold;
 	letter-spacing: 1px;
 	padding: 0 10px;
+	color: #7b4211;
+}
+
+nav ul li a:hover {
+  color: #7b4211;
+  text-decoration: none;
+}
+
+nav ul li a:visited {
+  color: #7b4211;
 }
 
 /* Forms */
