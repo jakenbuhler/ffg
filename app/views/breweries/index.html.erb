@@ -1,5 +1,9 @@
 <h2>Breweries</h2>
-<ul>
-  <%= render @breweries %>
-</ul>
 <p><%= link_to "New Brewery", new_brewery_path %></p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Progress</th>
+  </tr>
+  <%= render @breweries %>
+</table>

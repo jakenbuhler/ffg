@@ -14,10 +14,13 @@
 #
 
 class Beer < ActiveRecord::Base
-  attr_accessible :style, :name, :abv, :description
+  attr_accessible :brewery_id, :style, :name, :abv, :description
+  
   belongs_to :brewery
+  
   default_scope :order => "beers.name"
+  
   validates :brewery_id, :presence => true
-  validates :style, :presence => true
-  validates :name, :presence => true
+  validates :style,      :presence => true
+  validates :name,       :presence => true
 end

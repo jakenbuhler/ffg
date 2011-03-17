@@ -42,7 +42,7 @@ describe BreweriesController do
       it "should list all of the breweries" do
         get :index
         @breweries.each do |brewery|
-          response.should have_selector("li", :content => brewery.name)
+          response.should have_selector("tr", :content => brewery.name)
         end
       end
     
@@ -50,14 +50,6 @@ describe BreweriesController do
         get :index
         @breweries.each do |brewery|
           response.should have_selector("a", :href => brewery_path(brewery))
-        end
-      end
-    
-      it "should display a delete link" do
-        get :index
-        @breweries.each do |brewery|
-          response.should have_selector("a", :href => brewery_path(brewery),
-                                             :content => "delete")
         end
       end
     end
@@ -187,6 +179,20 @@ describe BreweriesController do
       it "should have a subheading displaying the brewery's name" do
         get :show, :id => @brewery
         response.should have_selector("h2", :content => @brewery.name)
+      end
+      
+      it "should show the brewery's beers" do
+        beer1 = Factory(:beer, :brewery => @brewery)
+        beer2 = Factory(:beer, :brewery => @brewery, :name => 'IPA')
+        get :show, :id => @brewery
+        response.should have_selector('li', :content => beer1.name)
+        response.should have_selector('li', :content => beer2.name)
+      end
+    
+      it "should display a delete link" do
+        get :show, :id => @brewery
+        response.should have_selector("a", :href => brewery_path(@brewery),
+                                           :content => "delete")
       end
     end
   end

@@ -1,5 +1,8 @@
-<h1>New beer</h1>
+<h2>New Beer</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', beers_path %>
+<%= form_for(@beer) do |f| %>
+  <%= render "fields", :f => f %>
+  <div class="actions">
+    <%= f.submit "Create Beer" %>
+  </div>
+<% end %>

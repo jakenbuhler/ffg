@@ -1,6 +1,8 @@
-<h1>Editing beer</h1>
+<h2>Edit Beer</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @beer %> |
-<%= link_to 'Back', beers_path %>
+<%= form_for(@beer) do |f| %>
+  <%= render "fields", :f => f %>
+  <div class="actions">
+    <%= f.submit "Update Beer" %>
+  </div>
+<% end %>

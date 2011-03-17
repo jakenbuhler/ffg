@@ -1,1 +1,19 @@
+<div class="sidebar">
+  <ul>
+    <li><%= @brewery.beers.count %> Beers</li>
+    <br />
+    <%= link_to 'edit', edit_brewery_path(@brewery) %> |
+    <%= link_to 'delete', @brewery, :method => :delete,
+                                    :confirm => "Delete #{@brewery.name}? This will also delete all #{@brewery.name} beers.",
+                                    :title => "Delete #{@brewery.name}" %>
+  </ul>
+</div>
+
 <h2><%= @brewery.name %></h2>
+
+<% unless @brewery.beers.empty? %>
+  <h3>Beers</h3>
+  <ul>
+    <%= render @beers %>
+  </ul>
+<% end %>

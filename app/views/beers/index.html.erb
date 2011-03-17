@@ -1,31 +1,23 @@
-<h1>Listing beers</h1>
+<h2><%= @title %></h2>
+
+<p><%= link_to 'New Beer', new_beer_path %></p>
 
 <table>
   <tr>
     <th>Brewery</th>
     <th>Style</th>
     <th>Name</th>
-    <th>Abv</th>
+    <th>ABV</th>
     <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @beers.each do |beer| %>
   <tr>
-    <td><%= beer.brewery_id %></td>
+    <td><%= beer.brewery.name %></td>
     <td><%= beer.style %></td>
-    <td><%= beer.name %></td>
-    <td><%= beer.abv %></td>
+    <td><%= link_to beer.name, beer %></td>
+    <td><%= beer.abv %>%</td>
     <td><%= beer.description %></td>
-    <td><%= link_to 'Show', beer %></td>
-    <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-    <td><%= link_to 'Destroy', beer, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Beer', new_beer_path %>

@@ -1,30 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="sidebar">
+  <ul>
+    <li><%= link_to @beer.brewery.name, @beer.brewery %></li>
+    <li><%= @beer.style %></li>
+    <li><%= @beer.abv %>% ABV</li>
+  </ul>
+  <br />
+  <%= link_to 'edit', edit_beer_path(@beer) %> |
+  <%= link_to 'delete', @beer, :method => :delete,
+                               :confirm => "Confirm deletion of #{@beer.name}",
+                               :title => "Delete #{@beer.name}" %>
+</div>
 
-<p>
-  <b>Brewery:</b>
-  <%= @beer.brewery_id %>
-</p>
-
-<p>
-  <b>Style:</b>
-  <%= @beer.style %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @beer.name %>
-</p>
-
-<p>
-  <b>Abv:</b>
-  <%= @beer.abv %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @beer.description %>
-</p>
+<h2><%= @beer.name %></h2>
+<p><%= @beer.description %></p>
 
 
-<%= link_to 'Edit', edit_beer_path(@beer) %> |
-<%= link_to 'Back', beers_path %>

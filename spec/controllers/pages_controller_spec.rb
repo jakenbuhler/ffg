@@ -62,6 +62,11 @@ describe PagesController do
         get 'admin'
         response.should have_selector("a", :href => breweries_path)
       end
+    
+      it "should link the the beers index" do
+        get 'admin'
+        response.should have_selector("a", :href => beers_path)
+      end
     end
   end
 end
