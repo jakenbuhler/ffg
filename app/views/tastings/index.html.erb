@@ -1,0 +1,31 @@
+<h1>Listing tastings</h1>
+
+<table>
+  <tr>
+    <th>Beer</th>
+    <th>Taster</th>
+    <th>Rating</th>
+    <th>Comments</th>
+    <th>Tasted on</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tastings.each do |tasting| %>
+  <tr>
+    <td><%= tasting.beer_id %></td>
+    <td><%= tasting.taster_id %></td>
+    <td><%= tasting.rating %></td>
+    <td><%= tasting.comments %></td>
+    <td><%= tasting.tasted_on %></td>
+    <td><%= link_to 'Show', tasting %></td>
+    <td><%= link_to 'Edit', edit_tasting_path(tasting) %></td>
+    <td><%= link_to 'Destroy', tasting, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tasting', new_tasting_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110206002936) do
+ActiveRecord::Schema.define(:version => 20110317141610) do
 
   create_table "beers", :force => true do |t|
     t.integer  "brewery_id"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20110206002936) do
   end
 
   add_index "breweries", ["name"], :name => "index_breweries_on_name", :unique => true
+
+  create_table "tastings", :force => true do |t|
+    t.integer  "beer_id"
+    t.integer  "taster_id"
+    t.integer  "rating"
+    t.string   "comments"
+    t.date     "tasted_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

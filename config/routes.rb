@@ -1,4 +1,6 @@
 Ffg::Application.routes.draw do
+  resources :tastings
+
   resources :beers
 
   resources :users
