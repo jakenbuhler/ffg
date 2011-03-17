@@ -1,83 +1,57 @@
 class TastingsController < ApplicationController
-  # GET /tastings
-  # GET /tastings.xml
+  before_filter :authenticate
+
   def index
     @tastings = Tasting.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @tastings }
-    end
+    @title = "Tastings"
   end
 
-  # GET /tastings/1
-  # GET /tastings/1.xml
   def show
     @tasting = Tasting.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @tasting }
-    end
+    @title = "#{@tasting.beer.name} Tasting"
   end
 
-  # GET /tastings/new
-  # GET /tastings/new.xml
   def new
     @tasting = Tasting.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @tasting }
-    end
+    @title = "New Tasting"
   end
 
-  # GET /tastings/1/edit
   def edit
     @tasting = Tasting.find(params[:id])
+    @title = 'Edit Tasting'
   end
 
-  # POST /tastings
-  # POST /tastings.xml
   def create
     @tasting = Tasting.new(params[:tasting])
-
-    respond_to do |format|
-      if @tasting.save
-        format.html { redirect_to(@tasting, :notice => 'Tasting was successfully created.') }
-        format.xml  { render :xml => @tasting, :status => :created, :location => @tasting }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @tasting.errors, :status => :unprocessable_entity }
-      end
+    if @tasting.save
+      flash[:success] = 'Tasting was successfully created.'
+      redirect_to @tasting
+    else
+      @title = 'New Tasting'
+      render "new"
     end
   end
 
-  # PUT /tastings/1
-  # PUT /tastings/1.xml
   def update
     @tasting = Tasting.find(params[:id])
-
-    respond_to do |format|
-      if @tasting.update_attributes(params[:tasting])
-        format.html { redirect_to(@tasting, :notice => 'Tasting was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @tasting.errors, :status => :unprocessable_entity }
-      end
+    if @tasting.update_attributes(params[:tasting])
+      flash[:success] = 'Tasting has been updated.'
+      redirect_to @tasting
+    else
+      @title = 'Edit Tasting'
+      render "edit"
     end
   end
 
-  # DELETE /tastings/1
-  # DELETE /tastings/1.xml
   def destroy
-    @tasting = Tasting.find(params[:id])
-    @tasting.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(tastings_url) }
-      format.xml  { head :ok }
-    end
+    Tasting.find(params[:id]).destroy
+    flash[:success] = 'Tasting has been deleted.'
+    redirect_to tastings_path
   end
+  
+  private
+  
+    def authenticate
+      deny_access unless signed_in?
+    end
 end

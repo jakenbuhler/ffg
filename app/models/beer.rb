@@ -17,6 +17,8 @@ class Beer < ActiveRecord::Base
   attr_accessible :brewery_id, :style, :name, :abv, :description
   
   belongs_to :brewery
+
+  has_many :tastings, :dependent => :destroy
   
   default_scope :order => "beers.name"
   

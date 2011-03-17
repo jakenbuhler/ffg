@@ -9,6 +9,9 @@ class CreateTastings < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :tastings, :beer_id
+    add_index :tastings, :taster_id
   end
 
   def self.down

@@ -34,11 +34,25 @@ namespace :db do
         style = ["Stout", "Ale", "IPA", "Dubel", "Tripel", "Lager"][rand(6)]
         name = Faker::Company.name
         abv = (rand * 10.0 + 2.0).round(2)
-        description = Faker::Lorem.sentence
-        brewery.beers.create(:style => style,
-                             :name => name,
-                             :abv => abv,
-                             :description => description)
+        description = Faker::Lorem.paragraph
+        brewery.beers.create!(:style => style,
+                              :name => name,
+                              :abv => abv,
+                              :description => description)
+      end
+    end
+
+    # Tastings
+    Beer.all.each do |beer|
+      User.all.each do |taster|
+        rating = rand(5) + 1
+        comments = Faker::Lorem.sentence
+        tasted_on = Date.new(rand(4) + 2008, rand(12) + 1, rand(28) + 1)
+        Tasting.create!(:beer_id => beer,
+                        :taster_id => taster.id,
+                        :rating => rating,
+                        :comments => comments,
+                        :tasted_on => tasted_on)
       end
     end
   end

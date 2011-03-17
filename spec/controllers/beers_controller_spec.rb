@@ -227,7 +227,8 @@ describe BeersController do
 
     describe "GET show" do
       it "should deny access" do
-        get :index
+        Beer.stub(:find).with("37") { mock_beer }
+        get :show, :id => "37"
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
@@ -235,7 +236,7 @@ describe BeersController do
 
     describe "GET new" do
       it "should deny access" do
-        get :index
+        get :new
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
@@ -243,7 +244,8 @@ describe BeersController do
 
     describe "GET edit" do
       it "should deny access" do
-        get :index
+        Beer.stub(:find).with("37") { mock_beer }
+        get :edit, :id => "37"
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
@@ -251,7 +253,8 @@ describe BeersController do
 
     describe "POST create" do
       it "should deny access" do
-        get :index
+        Beer.stub(:new).with({'these' => 'params'}) { mock_beer(:save => true) }
+        post :create, :beer => {'these' => 'params'}
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
@@ -259,7 +262,8 @@ describe BeersController do
 
     describe "PUT update" do
       it "should deny access" do
-        get :index
+        Beer.stub(:find) { mock_beer(:update_attributes => true) }
+        put :update, :id => "1"
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
@@ -267,7 +271,8 @@ describe BeersController do
 
     describe "DELETE destroy" do
       it "should deny access" do
-        get :index
+        Beer.stub(:find) { mock_beer }
+        delete :destroy, :id => "1"
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
