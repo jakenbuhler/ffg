@@ -1,6 +1,8 @@
-<h1>Editing tasting</h1>
+<h2><%= @title %></h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @tasting %> |
-<%= link_to 'Back', tastings_path %>
+<%= form_for(@tasting) do |f| %>
+  <%= render "fields", :f => f %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

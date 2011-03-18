@@ -11,7 +11,7 @@ namespace :db do
                          :password => "foobar",
                          :password_confirmation => "foobar")
     admin.toggle!(:admin)
-    7.times do |n|
+    3.times do |n|
       name = Faker::Name.name
       email = "example-#{n+1}@railstutorial.org"
       password = "password"
@@ -29,7 +29,7 @@ namespace :db do
     
     # Beers
     Brewery.all.each do |brewery|
-      beer_count = rand(5) + 1
+      beer_count = rand(3) + 1
       beer_count.times do
         style = ["Stout", "Ale", "IPA", "Dubel", "Tripel", "Lager"][rand(6)]
         name = Faker::Company.name
@@ -48,7 +48,7 @@ namespace :db do
         rating = rand(5) + 1
         comments = Faker::Lorem.sentence
         tasted_on = Date.new(rand(4) + 2008, rand(12) + 1, rand(28) + 1)
-        Tasting.create!(:beer_id => beer,
+        Tasting.create!(:beer_id => beer.id,
                         :taster_id => taster.id,
                         :rating => rating,
                         :comments => comments,

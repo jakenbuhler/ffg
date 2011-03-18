@@ -8,7 +8,7 @@ class TastingsController < ApplicationController
 
   def show
     @tasting = Tasting.find(params[:id])
-    @title = "#{@tasting.beer.name} Tasting"
+    @title = "Tasting of #{@tasting.beer.name}"
   end
 
   def new
