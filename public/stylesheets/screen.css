@@ -5,6 +5,7 @@
 	http://localhost:3000/stylesheets/screen.css?1293929394
 	http://localhost:3000/stylesheets/screen.css?1300333750
 	http://localhost:3000/stylesheets/screen.css?1300461813
+	http://localhost:3000/stylesheets/screen.css?1300464662
 */
 
 .container {
@@ -55,6 +56,10 @@ h1 {
 	color: #7b4211;
 	font-family: "OFL Sorts Mill Goudy TT", Georgia, "Times New Roman", Times, serif;
 	font-weight: bold;
+}
+
+h3 {
+	margin-bottom: 12px;
 }
 
 /* Links */

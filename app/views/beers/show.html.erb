@@ -12,6 +12,23 @@
 </div>
 
 <h2><%= @beer.name %></h2>
+
 <p><%= @beer.description %></p>
 
+<% unless @beer.tastings.empty? %>
+  
+  <h3>Tastings</h3>
 
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Beer</th>
+      <th>Taster</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th></th>
+    </tr>
+    <%= render @tastings %>
+  </table>
+
+<% end %>
