@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    @title = "All Users"
+    @title = "Members"
   end
   
   def new

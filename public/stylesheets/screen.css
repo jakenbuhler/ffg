@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/screen.css?1293925285
 	http://localhost:3000/stylesheets/screen.css?1293927626
 	http://localhost:3000/stylesheets/screen.css?1293929394
+	http://localhost:3000/stylesheets/screen.css?1300333750
 */
 
 .container {
@@ -153,6 +154,7 @@ ul.users {
 
 .users li {
   list-style: none;
+	height: 40px;
 }
 
 /* User show page */

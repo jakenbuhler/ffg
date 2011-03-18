@@ -27,7 +27,7 @@ describe UsersController do
       
       it "should have the right title" do
         get :index
-        response.should have_selector("title", :content => "All Users")
+        response.should have_selector("title", :content => "Members")
       end
       
       it "should have an element for each user" do
@@ -53,19 +53,6 @@ describe UsersController do
         second = Factory(:user, :email => 'user@example.net')
         third  = Factory(:user, :email => 'user@example.org')
         @users = [@user, second, third]
-      end
-      
-      it "should display a delete link for everyone except the current user" do
-        get :index
-        @users.each do |user|
-          if user == @user
-            response.should_not have_selector("a", :href => user_path(user),
-                                                   :content => "delete")
-          else
-            response.should have_selector("a", :href => user_path(user),
-                                               :content => "delete")
-          end
-        end
       end
     end
   end
@@ -111,12 +98,6 @@ describe UsersController do
       it "should have a profile image" do
         get :show, :id => @user
         response.should have_selector("h2>img", :class => "gravatar")
-      end
-    
-      it "should have a link to edit the user" do
-        get :show, :id => @user
-        response.should have_selector("a", :href => edit_user_path(@user),
-                                           :content => "Edit")
       end
     end
   end
