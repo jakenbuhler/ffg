@@ -3,10 +3,10 @@ require 'spec_helper'
 describe PagesController do
   render_views
 
-  describe "GET 'home'" do
+  describe "GET 'about'" do
     describe "for non-signed-in users" do
       it "should deny access" do
-        get 'home'
+        get 'about'
         response.should redirect_to(signin_path)
         flash[:notice].should =~ /sign in/i
       end
@@ -18,13 +18,13 @@ describe PagesController do
       end
 
       it "should be successful" do
-        get 'home'
+        get 'about'
         response.should be_success
       end
 
       it "should have the right title" do
-        get 'home'
-        response.should have_selector("title", :content => "Home")
+        get 'about'
+        response.should have_selector("title", :content => "About")
       end
     end
   end

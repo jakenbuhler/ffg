@@ -12,7 +12,7 @@ Ffg::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/admin',   :to => 'pages#admin'
 
-  root :to => 'pages#home'
+  root :to => 'pages#about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

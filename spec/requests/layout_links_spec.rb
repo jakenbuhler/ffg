@@ -11,7 +11,7 @@ describe "LayoutLinks" do
   
   it "should have a Home page at '/'" do
     get '/'
-    response.should have_selector('title', :content => "Home")
+    response.should have_selector('title', :content => "About")
   end
 
   it "should have an Administration page at '/admin'" do
@@ -22,8 +22,8 @@ describe "LayoutLinks" do
   it "should have the right links on the layout" do
     visit root_path
     response.should have_selector("a", :href => signout_path)
-    click_link "Home"
-    response.should have_selector('title', :content => "Home")
+    click_link "About"
+    response.should have_selector('title', :content => "About")
     click_link "Profile"
     response.should have_selector('title', :content => @user.name)
     click_link "Admin"

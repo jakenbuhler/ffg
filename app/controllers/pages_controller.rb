@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   before_filter :authenticate
   
-  def home
-    @title = "Home"
+  def about
+    @title = "About"
   end
   
   def admin
