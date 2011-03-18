@@ -8,7 +8,28 @@
                                  :title => "Delete #{@user.name}" %>
   <% end %>
 </div>
+
 <h2>
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h2>
+
+<% unless @user.tastings.empty? %>
+  
+  <br />
+  
+  <h3>Tastings</h3>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Beer</th>
+      <th>Taster</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th></th>
+    </tr>
+    <%= render @tastings %>
+  </table>
+
+<% end %>

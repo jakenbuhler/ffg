@@ -4,24 +4,14 @@
 
 <table>
   <tr>
+    <th>Date</th>
     <th>Beer</th>
     <th>Taster</th>
     <th>Rating</th>
     <th>Comments</th>
-    <th>Tasted On</th>
     <th></th>
   </tr>
-
-<% @tastings.each do |tasting| %>
-  <tr>
-    <td><%= tasting.beer.name %></td>
-    <td><%= tasting.taster.name %></td>
-    <td><%= tasting.rating %></td>
-    <td><%= tasting.comments %></td>
-    <td><%= tasting.tasted_on %></td>
-    <td><%= link_to 'Details', tasting %></td>
-  </tr>
-<% end %>
+  <%= render @tastings %>
 </table>
 
 <br />
