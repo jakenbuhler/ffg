@@ -6,6 +6,8 @@
 	http://localhost:3000/stylesheets/screen.css?1300333750
 	http://localhost:3000/stylesheets/screen.css?1300461813
 	http://localhost:3000/stylesheets/screen.css?1300464662
+	http://localhost:3000/stylesheets/screen.css?1300467853
+	http://localhost:3000/stylesheets/screen.css?1300469877
 */
 
 .container {
@@ -59,7 +61,7 @@ h1 {
 }
 
 h3 {
-	margin-bottom: 12px;
+	margin-bottom: 16px;
 }
 
 /* Links */
