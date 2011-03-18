@@ -5,4 +5,8 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
+  <div>
+    <%= gravatar_for @user %>
+    <%= link_to 'Edit Your Profile Picture at Gravatar', 'http://gravatar.com', :target => '_blank' %>
+  </div>
 <% end %>
