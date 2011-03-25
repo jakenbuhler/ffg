@@ -1,11 +1,11 @@
 <%= render "shared/error_messages", :object => f.object %>
 <div class="field">
   <%= f.label :beer_id %><br />
-  <%= f.select :beer_id, options_from_collection_for_select(Beer.all, :id, :name) %>
+  <%= f.collection_select :beer_id, Beer.all, :id, :name %>
 </div>
 <div class="field">
   <%= f.label :taster_id %><br />
-  <%= f.select :taster_id, options_from_collection_for_select(User.all, :id, :name) %>
+  <%= f.collection_select :taster_id, User.all, :id, :name %>
 </div>
 <div class="field">
   <%= f.label :rating %><br />

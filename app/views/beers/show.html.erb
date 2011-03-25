@@ -7,8 +7,10 @@
   <br />
   <%= link_to 'edit', edit_beer_path(@beer) %> |
   <%= link_to 'delete', @beer, :method => :delete,
-                               :confirm => "Confirm deletion of #{@beer.name}",
+                               :confirm => "Really delete #{@beer.name}?",
                                :title => "Delete #{@beer.name}" %>
+  <br />
+  <%= link_to 'new tasting', new_tasting_path(:beer_id => @beer) %>
 </div>
 
 <h2><%= @beer.name %></h2>
@@ -22,13 +24,28 @@
   <table>
     <tr>
       <th>Date</th>
-      <th>Beer</th>
       <th>Taster</th>
       <th>Rating</th>
       <th>Comments</th>
       <th></th>
+      <th></th>
     </tr>
-    <%= render @tastings %>
+
+  <% for tasting in @beer.tastings %>
+    <tr>
+      <td><%= tasting.tasted_on %></td>
+      <td><%= tasting.taster.name %></td>
+      <td><%= tasting.rating %></td>
+      <td><%= tasting.comments %></td>
+      <td><%= link_to 'edit', edit_tasting_path(tasting) %></td>
+      <td>
+        <%= link_to 'delete', tasting, :method => :delete,
+                                       :confirm => "Really delete tasting?",
+                                       :title => "Delete tasting" %>
+      </td>
+    </tr>
+  <% end %>
+
   </table>
 
 <% end %>

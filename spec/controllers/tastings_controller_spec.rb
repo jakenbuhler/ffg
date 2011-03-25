@@ -13,22 +13,6 @@ describe TastingsController do
       test_sign_in(Factory(:user))
     end
 
-    describe "GET index" do
-      it "assigns all tastings as @tastings" do
-        Tasting.stub(:all) { [mock_tasting] }
-        get :index
-        assigns(:tastings).should eq([mock_tasting])
-      end
-    end
-
-    describe "GET show" do
-      it "assigns the requested tasting as @tasting" do
-        Tasting.stub(:find).with("37") { mock_tasting }
-        get :show, :id => "37"
-        assigns(:tasting).should be(mock_tasting)
-      end
-    end
-
     describe "GET new" do
       it "assigns a new tasting as @tasting" do
         Tasting.stub(:new) { mock_tasting }
@@ -54,10 +38,12 @@ describe TastingsController do
           assigns(:tasting).should be(mock_tasting)
         end
 
-        it "redirects to the created tasting" do
-          Tasting.stub(:new) { mock_tasting(:save => true) }
+        it "redirects to the new tasting's beer" do
+          mock_beer = mock_model(Beer)
+          mock_beer.stub(:id => 20)
+          Tasting.stub(:new) { mock_tasting(:save => true, :beer => mock_beer) }
           post :create, :tasting => {}
-          response.should redirect_to(tasting_url(mock_tasting))
+          response.should redirect_to(beer_url(mock_beer))
         end
       end
 
@@ -117,9 +103,12 @@ describe TastingsController do
 
     describe "DELETE destroy" do
       it "destroys the requested tasting" do
-        Tasting.should_receive(:find).with("37") { mock_tasting }
+        mock_beer = mock_model(Beer)
+        mock_beer.stub(:id => 20)
+        Tasting.should_receive(:find).with("37") { mock_tasting(:beer => mock_beer) }
         mock_tasting.should_receive(:destroy)
         delete :destroy, :id => "37"
+        response.should redirect_to(beer_path(mock_beer))
       end
 
       it "redirects to the tastings list" do
@@ -131,22 +120,6 @@ describe TastingsController do
   end
 
   describe "for non-signed-in users" do
-    describe "GET index" do
-      it "should deny access" do
-        get :index
-        response.should redirect_to(signin_path)
-        flash[:notice].should =~ /sign in/i
-      end
-    end
-
-    describe "GET show" do
-      it "should deny access" do
-        Tasting.stub(:find).with("37") { mock_tasting }
-        get :show, :id => "37"
-        response.should redirect_to(signin_path)
-        flash[:notice].should =~ /sign in/i
-      end
-    end
 
     describe "GET new" do
       it "should deny access" do

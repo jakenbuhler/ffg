@@ -21,15 +21,31 @@
   <h3>Tastings</h3>
 
   <table>
+
     <tr>
       <th>Date</th>
       <th>Beer</th>
-      <th>Taster</th>
       <th>Rating</th>
       <th>Comments</th>
       <th></th>
+      <th></th>
     </tr>
-    <%= render @tastings %>
+
+  <% for tasting in @user.tastings %>
+    <tr>
+      <td><%= tasting.tasted_on %></td>
+      <td><%= tasting.beer.name %></td>
+      <td><%= tasting.rating %></td>
+      <td><%= tasting.comments %></td>
+      <td><%= link_to 'edit', edit_tasting_path(tasting) %></td>
+      <td>
+        <%= link_to 'delete', tasting, :method => :delete,
+                                       :confirm => "Really delete tasting?",
+                                       :title => "Delete tasting" %>
+      </td>
+    </tr>
+  <% end %>
+
   </table>
 
 <% end %>

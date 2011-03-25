@@ -1,18 +1,13 @@
 class TastingsController < ApplicationController
   before_filter :authenticate
 
-  def index
-    @tastings = Tasting.all
-    @title = "Tastings"
-  end
-
   def show
     @tasting = Tasting.find(params[:id])
     @title = "Tasting of #{@tasting.beer.name}"
   end
 
   def new
-    @tasting = Tasting.new
+    @tasting = Tasting.new(params)
     @title = "New Tasting"
   end
 
@@ -25,7 +20,7 @@ class TastingsController < ApplicationController
     @tasting = Tasting.new(params[:tasting])
     if @tasting.save
       flash[:success] = 'Tasting was successfully created.'
-      redirect_to @tasting
+      redirect_to @tasting.beer
     else
       @title = 'New Tasting'
       render "new"
@@ -44,9 +39,11 @@ class TastingsController < ApplicationController
   end
 
   def destroy
-    Tasting.find(params[:id]).destroy
+    tasting = Tasting.find(params[:id])
+    beer = tasting.beer
+    tasting.destroy
     flash[:success] = 'Tasting has been deleted.'
-    redirect_to tastings_path
+    redirect_to beer
   end
   
   private

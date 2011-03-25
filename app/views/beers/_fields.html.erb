@@ -1,7 +1,7 @@
 <%= render "shared/error_messages", :object => f.object %>
 <div class="field">
   <%= f.label :brewery_id %><br />
-  <%= f.select :brewery_id, options_from_collection_for_select(Brewery.all, :id, :name) %>
+  <%= f.collection_select :brewery_id, Brewery.all, :id, :name %>
 </div>
 <div class="field">
   <%= f.label :style %><br />

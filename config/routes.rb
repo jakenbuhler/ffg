@@ -1,8 +1,6 @@
 Ffg::Application.routes.draw do
-  resources :tastings
-
+  resources :tastings, :except => [:index, :show]
   resources :beers
-
   resources :users
   resources :breweries
   resources :sessions, :only => [:new, :create, :destroy]
