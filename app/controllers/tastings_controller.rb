@@ -31,7 +31,7 @@ class TastingsController < ApplicationController
     @tasting = Tasting.find(params[:id])
     if @tasting.update_attributes(params[:tasting])
       flash[:success] = 'Tasting has been updated.'
-      redirect_to @tasting
+      redirect_to @tasting.beer
     else
       @title = 'Edit Tasting'
       render "edit"

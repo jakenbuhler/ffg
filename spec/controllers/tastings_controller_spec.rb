@@ -78,10 +78,12 @@ describe TastingsController do
           assigns(:tasting).should be(mock_tasting)
         end
 
-        it "redirects to the tasting" do
-          Tasting.stub(:find) { mock_tasting(:update_attributes => true) }
+        it "redirects to the tasting's beer" do
+          mock_beer = mock_model(Beer)
+          mock_beer.stub(:id => 20)
+          Tasting.stub(:find) { mock_tasting(:update_attributes => true, :beer => mock_beer) }
           put :update, :id => "1"
-          response.should redirect_to(tasting_url(mock_tasting))
+          response.should redirect_to(beer_url(mock_beer))
         end
       end
 
