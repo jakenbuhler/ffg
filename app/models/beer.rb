@@ -20,7 +20,8 @@ class Beer < ActiveRecord::Base
 
   has_many :tastings, :dependent => :destroy
   
-  default_scope :order => "beers.name"
+  default_scope :joins => :brewery,
+                :order => ['breweries.name', "beers.name"]
   
   validates :brewery_id, :presence => true
   validates :style,      :presence => true

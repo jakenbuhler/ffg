@@ -16,6 +16,18 @@ describe Beer do
     Beer.create!(@attr)
   end
   
+  it 'should sort beers by brewery then by name' do
+    lagunitas = @brewery
+    allagash = Factory(:brewery, :name => 'Allagash')
+    maximus_ipa = Factory(:beer, :brewery => lagunitas, :name => 'Maximus IPA')
+    brown_shugga = Factory(
+      :beer,
+      :brewery => lagunitas,
+      :name => 'Brown Shugga')
+    tripel = Factory(:beer, :brewery => allagash, :name => 'Tripel')
+    curieux = Factory(:beer, :brewery => allagash, :name => 'Curieux')
+    Beer.all.should == [curieux, tripel, brown_shugga, maximus_ipa]
+  end
   describe "brewery associations" do
     before(:each) do
       attr_without_brewery = @attr.reject {|k,v| k == :brewery_id}
