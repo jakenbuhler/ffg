@@ -9,7 +9,7 @@
 </div>
 <div class="field">
   <%= f.label :rating %><br />
-  <%= f.text_field :rating %>
+  <%= f.select :rating, options_for_select(Array.new(6) { |i| [i, i] }) %>
 </div>
 <div class="field">
   <%= f.label :comments %><br />
