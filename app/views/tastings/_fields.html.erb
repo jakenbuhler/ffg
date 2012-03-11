@@ -9,11 +9,11 @@
 </div>
 <div class="field">
   <%= f.label :rating %><br />
-  <%= f.select :rating, options_for_select(Array.new(6) { |i| [i, i] }) %>
+  <%= f.select :rating, options_for_select(Array.new(6) { |i| [i, i] }, f.object.rating) %>
 </div>
 <div class="field">
   <%= f.label :comments %><br />
-  <%= f.text_field :comments %>
+  <%= f.text_area :comments %>
 </div>
 <div class="field">
   <%= f.label :tasted_on %><br />
